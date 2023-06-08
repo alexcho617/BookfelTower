@@ -7,8 +7,6 @@
 
 import Foundation
 
-//api 에서 가져오는 데이터는 따로 BookData로 만들어서 넣어야 하나?? enum 같은게 있어서 코더블 프로토콜을 사용 할 수 없기 때문에
-
 //view입장에서 서버에서 준건지 알 필요가 없음, initializer에서 서버 데이터를 받아서 만들기
 struct BookModel: Identifiable{
     var id: String
@@ -19,16 +17,13 @@ struct BookModel: Identifiable{
     let publisher: String
     let isbn: String
     let pageNumber: String
-    
     let readingStatus: ReadStatus?
     let startDate: Date?
     let endDate: Date?
     let rating: Int
     let currentReadingPage: Int
     let expectScore: Int
-    // rating 하나에 상태에 따라 다르게 저장할까 하다가, 일단 따로 변수를 만들었음.
 }
-
 
 struct HomeBookModel: Identifiable{
     var id: String
@@ -36,38 +31,18 @@ struct HomeBookModel: Identifiable{
     let pageNumber: String
 }
 
-
 enum ReadStatus{
     case done
     case reading
     case willRead
 }
 
-//Function for Home books.
-// select id title pageNumber from BookBanks where readingStatus == isDone. -> [[id:1,title:little prince, pageNumber: 200],[....],[....]]
-
-//Function for DetailPage
-//Select * from BookBanks where id == 1 ->
-//[id: "1",
-//title: "Mock Book 1",
-//coverUrl: "https://url.kr/7wozp6",
-//author: "John Smith",
-//description: "Mock description for book 1 Mock description for book 1 Mock description for book 1 Mock description for book 1 Mock description for book 1",
-//publisher: "Mock Publisher",
-//isbn: "9781234567890",
-//pageNumber: "200",
-//readingStatus: .isDone,
-//startDate: dateFormatter.date(from: "2023-01-01"),
-//endDate: dateFormatter.date(from: "2023-01-15"),
-//rating: 4]
-
-
 //Generate mock data for home
 func generateHomeMockBooks() -> [HomeBookModel] {
     return [
-        HomeBookModel(id: "1", title: "Mock Book 1", pageNumber: "200"),
-        HomeBookModel(id: "2", title: "Mock Book 2", pageNumber: "200"),
-        HomeBookModel(id: "3", title: "Mock Book 3", pageNumber: "200")
+        HomeBookModel(id: "9781234567890", title: "Mock Book 1", pageNumber: "200"),
+        HomeBookModel(id: "9780987654321", title: "Mock Book 2", pageNumber: "200"),
+        HomeBookModel(id: "9785432167890", title: "Mock Book 3", pageNumber: "200")
     ]
 }
 
@@ -95,7 +70,6 @@ func generateDetailMockBook(id: String) -> BookModel {
         isbn: "9781234567890",
         pageNumber: "200",
         readingStatus: .reading,
-
         startDate: dateFormatter.date(from: "2023-01-01"),
         endDate: dateFormatter.date(from: "2023-01-15"),
         rating: 4,
@@ -104,8 +78,7 @@ func generateDetailMockBook(id: String) -> BookModel {
     )
 }
 
-
-// Generate mock data
+// Generate mock data for LibraryView
 func generateLibraryMockBooks() -> [BookModel] {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd"

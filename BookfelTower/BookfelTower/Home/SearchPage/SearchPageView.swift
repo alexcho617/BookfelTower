@@ -13,6 +13,7 @@ struct SearchPageView: View{
     @State var query = ""
     @State var response = Response(version: "", logo: "", title: "", link: "", pubDate: "", totalResults: 0, startIndex: 0, itemsPerPage: 0, query: "", searchCategoryId: 0, searchCategoryName: "", item: nil)
     var itemDataSample = ItemData(index: 0, title: "", link: "", author: "", pubDate: "", description: "", isbn: "", isbn13: "", itemId: 0, priceSales: 0, priceStandard: 0, mallType: "", stockStatus: "", mileage: 0, cover: "", categoryId: 0, categoryName: "", publisher: "", salesPoint: 0, adult: false, fixedPrice: false, customerReviewRank: 0)
+    
     var body: some View{
         NavigationView{
             VStack{
@@ -30,19 +31,19 @@ struct SearchPageView: View{
                     }
                     
                 }
+                if self.isSearchPressed {
+                    Text("검색결과를 모두 보여드렸습니다. ☺️")
+                }
+                BottomButton()
             }
-            BottomButton()
         }
         .navigationTitle("책 검색하기")
         .searchable(text: $query,placement: .navigationBarDrawer(displayMode: .automatic), prompt: "검색")
         .onSubmit(of: .search) {
-            // Perform search
             service.search(keyword: query) { response, error in
                 if let error = error {
-                    // Handle error
                     print("Error: \(error)")
                 } else if let response = response {
-                    // Update the videos array with the search results
                     self.isSearchPressed = true
                     self.response = response
                 }
@@ -50,7 +51,6 @@ struct SearchPageView: View{
         }
     }
 }
-
 
 struct SearchCard: View{
     let title: String
@@ -61,7 +61,6 @@ struct SearchCard: View{
     let publisher: String
     
     var body: some View{
-//        NavigationLink(destination: SampleDetailView(isbn: self.isbn)){
         NavigationLink(destination: SampleDetailView(isbn: self.isbn)){
             HStack(spacing: 0){
                 AsyncImage(url: URL(string: coverUrl)) { image in image
@@ -95,7 +94,6 @@ struct SearchCard: View{
             .cornerRadius(20)
             .padding(.horizontal, DeviceSize.shouldSmallSize ? 15 : 20)
         }
-       
     }
 }
 
@@ -104,7 +102,6 @@ struct BottomButton: View{
         ZStack{
             Color.gray.opacity(0.4)
             VStack(spacing: 10){
-                Text("검색결과를 모두 보여드렸습니다. ☺️")
                 VStack{
                     Button(action: {
                         print("add book manually")

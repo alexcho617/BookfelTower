@@ -11,7 +11,6 @@ struct HomeView: View {
     let totalHeight = getHomeBooksHeight()
     let towerCharacter = "왕귤"
     let towerCharacterImageURL = "https://cdn-icons-png.flaticon.com/512/135/135620.png"
-    
     @State private var query = ""
     @State private var text = ""
     
@@ -35,7 +34,6 @@ struct HomeView: View {
                 ScrollView{
                     Spacer(minLength: 300)
                     VStack(alignment: .center, spacing:1) {
-                        
                         Text("\(towerCharacter) \(totalHeight)cm")
                         AsyncImage(url: URL(string: towerCharacterImageURL)) { image in
                             image.resizable()
@@ -56,11 +54,8 @@ struct HomeView: View {
                         }
                     }
                 }
-                
-                
             }
         }
-        
     }
 }
 struct HomeView_Previews: PreviewProvider {
