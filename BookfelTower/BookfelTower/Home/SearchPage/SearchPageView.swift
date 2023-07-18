@@ -61,8 +61,7 @@ struct SearchCard: View{
     let publisher: String
     
     var body: some View{
-//        NavigationLink(destination: SampleDetailView(isbn: self.isbn)){
-        NavigationLink(destination: SampleDetailView(isbn: self.isbn)){
+        NavigationLink(destination: DetailPageView(isbn: self.isbn, coverUrl: coverUrl)){
             HStack(spacing: 0){
                 AsyncImage(url: URL(string: coverUrl)) { image in image
                         .resizable()
