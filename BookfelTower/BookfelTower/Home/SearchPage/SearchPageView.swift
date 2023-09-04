@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SearchPageView: View{
-    let service = BookAPIService()
     @State var isSearchPressed = false
     @State var query = ""
     @State var response = Response(version: "", logo: "", title: "", link: "", pubDate: "", totalResults: 0, startIndex: 0, itemsPerPage: 0, query: "", searchCategoryId: 0, searchCategoryName: "", item: nil)
@@ -37,7 +36,7 @@ struct SearchPageView: View{
         .searchable(text: $query,placement: .navigationBarDrawer(displayMode: .automatic), prompt: "검색")
         .onSubmit(of: .search) {
             // Perform search
-            service.search(keyword: query) { response, error in
+            BookAPIService.shared.search(keyword: query) { response, error in
                 if let error = error {
                     // Handle error
                     print("Error: \(error)")

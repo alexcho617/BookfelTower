@@ -103,6 +103,8 @@ struct ItemData: Codable, Identifiable {
 }
 
 class BookAPIService{
+    private init(){}
+    static let shared = BookAPIService()
     func search(keyword: String, completion: @escaping (Response?, Error?) -> Void) {
         let urlString = "https://www.aladin.co.kr/ttb/api/ItemSearch.aspx?"
         let apiKey = "ttbexist50051416001"
