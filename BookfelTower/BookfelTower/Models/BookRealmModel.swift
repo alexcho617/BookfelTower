@@ -8,6 +8,7 @@
 import Foundation
 import RealmSwift
 
+//TODO: Realm Model 다시 설계해보기
 class Book: Object {
     @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var title: String = ""
@@ -26,10 +27,22 @@ class Book: Object {
     @Persisted var currentReadingPage: Int
     @Persisted var expectScore: Int
     
-//    convenience init(name: String, ownerId: String) {
-//        self.init()
-//        self.ownerId = ownerId
-//    }
+    convenience init(title: String, ownerId: String, coverUrl: String, author: String, descriptionOfBook: String, publisher: String, isbn: String, pageNumber: String, startDate: Date? = nil, endDate: Date? = nil, rating: Int, currentReadingPage: Int, expectScore: Int) {
+        self.init()
+        self.title = title
+        self.ownerId = ownerId
+        self.coverUrl = coverUrl
+        self.author = author
+        self.descriptionOfBook = descriptionOfBook
+        self.publisher = publisher
+        self.isbn = isbn
+        self.pageNumber = pageNumber
+        self.startDate = startDate
+        self.endDate = endDate
+        self.rating = rating
+        self.currentReadingPage = currentReadingPage
+        self.expectScore = expectScore
+    }
 }
 enum RealmReadStatus{
     case done

@@ -141,8 +141,8 @@
 		57E8A2662A0B332700AFFEAA /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				21EB4E302A1DD6A400E12B12 /* MyLibraryPage */,
 				57E8A26B2A0B338800AFFEAA /* HomeView.swift */,
+				21EB4E302A1DD6A400E12B12 /* MyLibraryPage */,
 				21C8BE692A14913400308BEF /* DetailPage */,
 				21C8BE6A2A14913F00308BEF /* SearchPage */,
 			);
