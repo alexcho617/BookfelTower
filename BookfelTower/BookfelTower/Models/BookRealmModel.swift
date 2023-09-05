@@ -8,7 +8,12 @@
 import Foundation
 import RealmSwift
 
-//TODO: Realm Model 다시 설계해보기
+enum RealmReadStatus: String, PersistableEnum{
+    case done
+    case reading
+    case willRead
+}
+
 class Book: Object {
     @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var title: String = ""
@@ -20,7 +25,7 @@ class Book: Object {
     @Persisted var isbn: String
     @Persisted var pageNumber: String
     
-//    @Persisted var readingStatus: RealmReadStatus?
+    @Persisted var readingStatus: RealmReadStatus?
     @Persisted var startDate: Date?
     @Persisted var endDate: Date?
     @Persisted var rating: Int
@@ -44,11 +49,7 @@ class Book: Object {
         self.expectScore = expectScore
     }
 }
-enum RealmReadStatus{
-    case done
-    case reading
-    case willRead
-}
+
 
 
 
