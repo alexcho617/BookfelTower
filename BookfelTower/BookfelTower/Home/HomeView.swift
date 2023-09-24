@@ -48,7 +48,7 @@ struct HomeView: View {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 8)
                                     .foregroundColor(.pink)
-                                    .opacity(Double.random(in: 0.5...9))
+                                    .opacity(Double.random(in: 0.5...0.9))
                                     .frame(width: 200, height: dynamicHeight)
                                     .offset(CGSize(width: Int.random(in: -20...20), height: 0))
                                 Text(book.title)
