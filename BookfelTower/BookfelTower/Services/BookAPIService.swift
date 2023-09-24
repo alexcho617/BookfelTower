@@ -107,7 +107,7 @@ class BookAPIService{
     static let shared = BookAPIService()
     func search(keyword: String, completion: @escaping (Response?, Error?) -> Void) {
         let urlString = "https://www.aladin.co.kr/ttb/api/ItemSearch.aspx?"
-        let apiKey = "ttbexist50051416001"
+        let apiKey = APIKey.aladin
         let query = keyword
         let maxResults = "10"
         let version = "20131101"
